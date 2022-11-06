@@ -1,0 +1,168 @@
+@import url(./images/open-book.png);
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    /* background-color: rgba(0, 0, 0, 0.513); */
+    background-color: white;
+    min-height: 100vh;
+}
+
+.container-library{
+    max-width: min(1080px,100%);
+    margin-inline: auto;
+    background-color: white;
+    min-height: 100vh;
+}
+
+#page-title{
+    margin-top: 0.6rem;
+   font-size: 4rem;
+   text-align: center;
+}
+
+.new-book-container{
+    /* background-color: hsla(120, 133%, 50%, 0.582); */
+    text-align: right;
+    border-block: 1px solid black;
+}
+
+#new-book-btn{
+    margin-bottom: 0.5rem;
+    background-color: inherit;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+
+#new-book-btn::after{
+    content: '⌄';
+    position: absolute;
+    bottom: -0.7rem;
+    left: 50%;
+
+}
+
+.new-book-form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-block: 2rem;
+    height: auto;
+    transition: height 2s ease-in;
+}
+
+.booklist-legend{
+    font-weight: 600;
+    /* border-bottom: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    padding-right: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.booklist-legend > * {
+    padding: 0.3rem 1rem;
+    border-radius: 0.1rem;
+}
+
+.legend:nth-child(1){
+    background-color: hsla(120, 103%, 54%, 0.342);
+}
+
+.legend:nth-child(2){
+    background-color: hsl(39, 77%, 63%);
+    margin-left: 0.5rem;
+}
+
+.legend:nth-child(3){
+    background-color: rgba(0, 0, 0, 0.57);
+    margin-left: 0.5rem;
+}
+
+
+.book-list{
+    margin-top: 1rem;
+    /* max-width: min(900px,100%); */
+    width: 98%;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,200px));
+    gap: 0.8rem;
+}
+
+.card{
+    position: relative;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 94% 6%;
+    grid-template-rows: 10% 70% 20%;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 100%;
+    border: 1px solid hsla(0, 0%, 60%, 0.253);
+    background-image: url(./images/open-book.png);
+    background-color: hsla(120, 103%, 54%, 0.342);
+    background-repeat: no-repeat;
+    background-size: 60% 80%;
+    background-position: right 50% bottom 15%;
+}
+
+.card > *{
+    opacity: 0;
+}
+
+.card:hover{
+    background-color: rgba(0, 0, 0, 0.764);
+    transition: background-position 0.4s ease-out;
+    background-position: right 50% top 15%;
+    color: white;
+}
+
+.card:hover > *{
+    opacity:  1;
+    transition: opacity 0.5s ease 0.1s;
+}
+
+.removeCard{
+    border: none;
+    background-color: rgba(0, 128, 0, 0.013);
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    grid-column-start: 2;
+}
+
+.switchBtnWrapper{
+    grid-column-start: -3;
+}
+.switchBtnWrapper input{
+    cursor: pointer;
+}
+
+.reading{
+    background-color: hsl(39, 77%, 63%);
+}
+
+.complited{
+    background-color: rgba(0, 0, 0, 0.57);
+    background-position: right 50% top 15%;
+}
+
+.hide{
+    display: none;
+    height: 0;
+}
+
+@keyframes lowToHighOpacity{
+    0%{opacity:0;}
+    50%{opacity: 1;}
+}
