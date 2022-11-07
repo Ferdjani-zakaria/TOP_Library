@@ -8,6 +8,9 @@ const newBookForm = document.querySelector(".new-book-form");
 let myLibrary = [
   { title: "The first law", author: "Joe Abercrombie", category: "Fiction" },
   { title: "I am Legend", author: "Richard Matheson", category: "Fiction" },
+  { title: "The Wretched of the Earth ", author: "Frantz Fanon", category: "History" },
+  { title: "Gone Girl", author: "Gillian Flynn", category: "Crime & Mystery" },
+  { title: "The Da Vinci code", author: "Dan Brown", category: "Crime & Mystery" },
 ];
 
 const book = {
@@ -107,7 +110,9 @@ function showNewBook(newBook) {
 
   card.id = `${newBook.title.replace(/\s+/g, '')}`;
 
-
+  removeCard.addEventListener("click", function (){
+    bookList.removeChild(card);
+  })
 
   bookList.appendChild(card);
 }
@@ -130,6 +135,9 @@ formSubmit.addEventListener("click", function (event) {
   addBookToLibrary(newBook);
   showNewBook(newBook);
 });
+
+
+
 
 
 showAllBook();
