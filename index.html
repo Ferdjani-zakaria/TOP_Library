@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <section class="container-library">
       <h1 id="page-title">Library</h1>
       <div class="new-book-container">
-        <button id="new-book-btn">
-           Add a new book
-        </button>
-        <form action=""class="hide new-book-form">
-            <div>
-              <label for="book-title">Book title: </label>
-              <input class="form-input" type="text" name="author" id="form-input" size="20" required>
-            </div>
-            <div>
-              <label for="author">Book title: </label>
-              <input class="form-input" type="text" name="author" id="author" size="20">
-            </div>
-            <div>
-              <label for="category">Category: </label>
-              <select class="form-input" name="category" id="category">
-                <option value="nocategory" selected>no category</option>
-                <option value="fiction">Fiction</option>
-                <option value="biography">Biography</option>
-                <option value="memoirs">Memoirs</option>
-                <option value="cookbooks">Cookbooks</option>
-                <option value="crime">Crime & Mystery</option>
-              </select>
-            </div>
-            <input class="form-submit" type="submit" value="Add">
+        <button id="new-book-btn">Add a new book</button>
+        <form action="#" class="hide new-book-form">
+          <label for="book-title">Book title: </label>
+          <input
+            class="form-input"
+            type="text"
+            name="book-title"
+            id="book-title"
+            size="20"
+            required
+          />
+          <label for="author">Book title: </label>
+          <input
+            class="form-input"
+            type="text"
+            name="author"
+            id="author"
+            size="20"
+          />
+          <label for="category">Category: </label>
+          <select class="form-input" name="category" id="category">
+            <option value="nocategory" selected>no category</option>
+            <option value="fiction">Fiction</option>
+            <option value="biography">Biography</option>
+            <option value="memoirs">Memoirs</option>
+            <option value="cookbooks">Cookbooks</option>
+            <option value="crime">Crime & Mystery</option>
+          </select>
+          <input class="form-submit" type="submit" value="Add" />
         </form>
       </div>
       <div class="booklist-legend">
@@ -42,14 +47,9 @@
         <p class="legend">Reading</p>
         <p class="legend">Complited</p>
       </div>
-      <div class="book-list">
-        
-      </div>
-      
+      <div class="book-list"></div>
     </section>
-    
-
 
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
