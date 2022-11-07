@@ -112,6 +112,7 @@ function showNewBook(newBook) {
 
   removeCard.addEventListener("click", function (){
     bookList.removeChild(card);
+    myLibrary = myLibrary.filter(function(elem) { return elem.title != `${newBook.title}`; });
   })
 
   bookList.appendChild(card);
