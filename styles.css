@@ -7,7 +7,6 @@
 body{
     margin: 0;
     padding: 0;
-    /* background-color: rgba(0, 0, 0, 0.513); */
     background-color: white;
     min-height: 100vh;
 }
@@ -26,7 +25,6 @@ body{
 }
 
 .new-book-container{
-    /* background-color: hsla(120, 133%, 50%, 0.582); */
     text-align: right;
     border-block: 1px solid black;
 }
@@ -91,7 +89,6 @@ body{
 
 .book-list{
     margin-top: 1rem;
-    /* max-width: min(900px,100%); */
     width: 98%;
     margin-inline: auto;
     display: grid;
@@ -116,8 +113,52 @@ body{
     background-position: right 50% bottom 15%;
 }
 
-.card > *{
+.cardDetailsWrapper{
+    max-width: 80%;
+}
+
+.cardDetailsWrapper > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card > *:not(.cardTitle){
     opacity: 0;
+}
+
+.cardTitle{
+    color: black;
+    position: absolute;
+    top: 0.1rem;
+    margin: 0;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardStatus{
+    font-size: 2rem;
+    font-weight: 600;
+    position: absolute;
+    bottom: 30%;
+    opacity: 0;
+}
+
+.reading > .cardStatus, .complited > .cardStatus{
+    opacity: 1;
+}
+
+.reading > .cardStatus{
+    color: rgb(255, 255, 0);
+}
+
+.complited > .cardStatus{
+    color: rgba(126, 227, 126, 0.955);
+}
+
+.card:hover > div , .card:hover > button{
+    opacity:  1;
+    transition: opacity 0.5s ease 0.1s;
 }
 
 .card:hover{
@@ -127,10 +168,19 @@ body{
     color: white;
 }
 
-.card:hover > *{
-    opacity:  1;
-    transition: opacity 0.5s ease 0.1s;
+.complited .cardTitle{
+    top: 85%;
 }
+
+.card:hover .cardTitle{
+    opacity: 0;
+}
+
+.card:hover .cardStatus{
+    opacity: 0;
+}
+
+
 
 .removeCard{
     border: none;
@@ -143,6 +193,7 @@ body{
 
 .switchBtnWrapper{
     grid-column-start: -3;
+    z-index: 1;
 }
 .switchBtnWrapper input{
     cursor: pointer;
