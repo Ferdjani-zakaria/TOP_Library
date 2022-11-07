@@ -92,7 +92,7 @@ body{
     width: 98%;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(100px,200px));
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
     gap: 0.8rem;
 }
 
