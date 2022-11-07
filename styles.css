@@ -134,6 +134,8 @@ body{
     max-width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .cardStatus{
