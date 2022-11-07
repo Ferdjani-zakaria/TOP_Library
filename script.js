@@ -136,6 +136,7 @@ formSubmit.addEventListener("click", function (event) {
   let newBook = Book();
   addBookToLibrary(newBook);
   showNewBook(newBook);
+  newBookForm.classList.toggle("hide");
   }
 });
 
