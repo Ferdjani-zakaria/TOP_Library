@@ -123,7 +123,8 @@ newBookBtn.addEventListener("click", function () {
   newBookForm.classList.toggle("hide");
 });
 
-formSubmit.addEventListener("click", function () {
+formSubmit.addEventListener("click", function (event) {
+  event.preventDefault()
   let e = formInput[0].value;
   let newBook = Book();
   addBookToLibrary(newBook);
