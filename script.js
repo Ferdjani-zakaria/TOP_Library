@@ -3,11 +3,11 @@ const newBookBtn = document.querySelector("#new-book-btn");
 const formInput = document.querySelectorAll(".form-input");
 const formSubmit = document.querySelector(".form-submit");
 const newBookForm = document.querySelector(".new-book-form");
-// const switchBtnList = document.querySelectorAll(".switchBtn");
+
 
 let myLibrary = [
-  { title: "vidal", author: "eric", category: "no category" },
-  { title: "blop", author: "royal", category: "no category" },
+  { title: "The first law", author: "Joe Abercrombie", category: "Fiction" },
+  { title: "I am Legend", author: "Richard Matheson", category: "Fiction" },
 ];
 
 const book = {
@@ -26,9 +26,11 @@ function Book() {
 }
 
 function addBookToLibrary(book) {
-  // do stuff here
+  // add a new book to the library array
   myLibrary.push(book);
 }
+
+// Main function, create a card and all the element in it
 
 function showNewBook(newBook) {
   const card = document.createElement("div");
@@ -38,30 +40,40 @@ function showNewBook(newBook) {
   removeCard.classList.add("removeCard");
   removeCard.innerText = `X`;
 
+  const cardStatus = document.createElement("p");
+  cardStatus.classList.add("cardStatus");
+
   const switchBtnWrapper = document.createElement("div");
   switchBtnWrapper.classList.add("switchBtnWrapper");
 
   for (i = 0; i < 3; i++) {
     const switchBtn = document.createElement("input");
-    switchBtn.classList.add="switchBtn"
+    switchBtn.classList.add = "switchBtn";
     switchBtn.type = "radio";
-    switchBtn.name = `${newBook.title}`;
+    switchBtn.name = `${newBook.title.replace(/\s+/g, '')}`;
 
-    //  the id need to have "@" in the middle so i can identifie the input in the switch
+    //  the id need to have "@" in the middle so i can identifie the input in the radio input to change color of card bg
 
     i === 0
-      ? ((switchBtn.id = `${newBook.title}@start`), (switchBtn.checked = true))
+      ? ((switchBtn.id = `${newBook.title.replace(/\s+/g, '')}@start`), (switchBtn.checked = true))
       : i === 1
-      ? (switchBtn.id = `${newBook.title}@reading`)
-      : (switchBtn.id = `${newBook.title}@complited`);
+      ? (switchBtn.id = `${newBook.title.replace(/\s+/g, '')}@reading`)
+      : (switchBtn.id = `${newBook.title.replace(/\s+/g, '')}@complited`);
 
-      switchBtn.addEventListener("click", function(){
-        let a = switchBtn.id.split('@');
-        let wrapper = document.querySelector(`#${a[0]}`);
-        a[1] === 'reading' ? (wrapper.classList.remove("complited"),wrapper.classList.add("reading")):
-        a[1] === 'complited' ? wrapper.classList.add("complited"):
-        (wrapper.classList.remove("reading"),wrapper.classList.remove("complited"));
-      })
+    switchBtn.addEventListener("click", function () {
+      let a = switchBtn.id.split("@");
+      let wrapper = document.querySelector(`#${a[0]}`);
+      a[1] === "reading"
+        ? (wrapper.classList.remove("complited"),
+          cardStatus.innerText = `Reading`,
+          wrapper.classList.add("reading"))
+        : a[1] === "complited"
+        ? (wrapper.classList.add("complited"),
+          cardStatus.innerText = `Complited`)
+        : (wrapper.classList.remove("reading"),
+          wrapper.classList.remove("complited"),
+          cardStatus.innerText = ``);
+    });
 
     switchBtnWrapper.appendChild(switchBtn);
   }
@@ -72,7 +84,7 @@ function showNewBook(newBook) {
 
   cardInfoTitle.innerText = `Title: ${newBook.title}`;
   cardInfoAuthor.innerText = `Author: ${newBook.author}`;
-  cardInfoPage.innerText = `Pages: ${newBook.category}`;
+  cardInfoPage.innerText = `Category: ${newBook.category}`;
 
   const cardDetailsWrapper = document.createElement("div");
   cardDetailsWrapper.classList.add("cardDetailsWrapper");
@@ -84,8 +96,18 @@ function showNewBook(newBook) {
   card.appendChild(removeCard);
   card.appendChild(cardDetailsWrapper);
   card.appendChild(switchBtnWrapper);
+  
 
-  card.id=`${newBook.title}`
+  const cardTitle = document.createElement("p");
+  cardTitle.innerText = `${newBook.title}`;
+  cardTitle.classList.add("cardTitle");
+
+  card.appendChild(cardTitle);
+  card.appendChild(cardStatus);
+
+  card.id = `${newBook.title.replace(/\s+/g, '')}`;
+
+
 
   bookList.appendChild(card);
 }
@@ -107,15 +129,6 @@ formSubmit.addEventListener("click", function () {
   addBookToLibrary(newBook);
   showNewBook(newBook);
 });
-
-// switchBtnList.addEventListener("click", function(e){
-//   let a = e.id.split('@');
-//   let wrapper = document.querySelector(`#${a[0]}`);
-//   a[1] === 'reading' ? (wrapper.classList.remove("complited"),wrapper.classList.add("reading")):
-//   a[1] === 'complited' ? wrapper.classList.add("complited"):
-//   (wrapper.classList.remove("reading"),wrapper.classList.remove("complited"));
-// })
-
 
 
 showAllBook();
