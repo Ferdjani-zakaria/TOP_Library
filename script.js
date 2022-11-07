@@ -130,8 +130,11 @@ newBookBtn.addEventListener("click", function () {
 });
 
 formSubmit.addEventListener("click", function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   let e = formInput[0].value;
+  if (e === "") {
+    return
+  }
   let newBook = Book();
   addBookToLibrary(newBook);
   showNewBook(newBook);
